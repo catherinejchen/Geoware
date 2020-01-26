@@ -32,6 +32,7 @@
                 <button class="text button button-3 button-round">description</button>
                 <button class="text button button-4 button-round">category</button>
             </div > -->
+        
             <div class="grid-buttons">
                 <div class="grid-buttons__item grid-buttons__item--1 cards">
                     <img class="cards-img" src="camera.png">
@@ -62,7 +63,26 @@
                     scaleControl: false,
                     streetViewControl: false
                 });
+                var marker;
+
+                function placeMarker(location) {
+                if ( marker ) {
+                marker.setPosition(location);
+                } else {
+                marker = new google.maps.Marker({
+                position: location,
+                map: mapnew
+                });
+                }
+                }
+
+                google.maps.event.addListener(mapnew, 'click', function(event) {
+                placeMarker(event.latLng);
+                // var latitude = event.latLng.lat();
+                // var longitude = event.latLng.lng();
+                });
             }
+            
             </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVFxlXZXgKNSabKaxNb82u9ex126Ib48&callback=initMap"
         async defer></script>

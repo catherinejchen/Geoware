@@ -78,7 +78,7 @@
                     }
 
                     geocodeLatLng(coordinates, function (data) {
-                        let street_number;
+                        let street_number = "";
                         console.log(data);
                         const localityObject = data.address_components.filter((obj) => {
                             return obj.types.includes('locality');
