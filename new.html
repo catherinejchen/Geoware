@@ -10,15 +10,15 @@
     </head>
     <body id="background">
         <div class="container">
-            <img class="squiggly" src="Squiggly.png">
-            <div class="container-top-middle grid">
+            <!-- <img class="squiggly" src="Squiggly.png"> -->
+            <!-- <div class="container-top-middle grid">
                 <div class="text-overcenter grid__item grid__item--1">
                     <a class="text-press no-decoration" href="nearby.html">NEARBY</a>
                 </div>
                 <div class="text-over center grid__item grid__item--2">
                     <a class="text-press no-decoration" href="new.html">NEW</a>
                 </div>
-            </div>
+            </div> -->
             <div id="map-new"></div>
         </div>
         <div class="container-fifty">
@@ -41,9 +41,9 @@
                 mapnew = new google.maps.Map(document.getElementById('map-new'), {
                     center: {lat: 49.5, lng: -123.121},
                     zoom: 8,
-                    zoomControl: false,
+                    // zoomControl: false,
                     mapTypeControl: false,
-                    fullscreenControl: false,
+                    // fullscreenControl: false,
                     scaleControl: false,
                     streetViewControl: false
                 });

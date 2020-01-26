@@ -292,11 +292,6 @@ p{
     letter-spacing: 6px;
 }
 
-/* .text-over{
-    position: absolute;
-    transform: translate(-50%, 0%);
-} */
-
 .text-press:hover{
     opacity: 40%;
     /* text-decoration: underline; */
@@ -311,5 +306,9 @@ p{
 }
 
 #map-small div div a div img{
+    display:none;
+}
+
+#map-new div div a div img{
     display:none;
 }
