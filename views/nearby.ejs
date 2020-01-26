@@ -11,6 +11,20 @@
 </head>
 
 <body>
+    <div id="id103" class="w3-modal">
+        <div class="w3-modal-content" style="padding-top: 0;">
+            <div class="w3-container info-window">
+                <span onclick="document.getElementById('id103').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h1 id="post-title"></h1>
+                <img style="padding-bottom: 15px;" id="post-image">
+                <p id="post-description"></p>
+                <h3 style="margin-top: 20px;" id="post-time"></h3>
+                <h3 id="post-date"></h3>
+                <h3 id="post-category"></h3>
+            </div>
+        </div>
+    </div>
     <div id="map"></div>
     </div>
     <script>
@@ -56,12 +70,18 @@
                 google.maps.LatLng(x[key].latitude, x[key].longitude),
                 map: map
                 });
+                marker.setIcon('marker.png');
                 google.maps.event.addListener(marker, 'click',
                 (function (marker, i) {
                 return function () {
-                let html = "<div class='info-window'><h1>" + x[key].title + "</h1><img src='" + x[key].image + "'>" + "<p>" + x[key].description + "</p>" + "<h3>" + x[key].time + "</h3>" + "<h3>" + x[key].date + "</h3>" + "<h3>Category: " + x[key].category + "</h3>" + "</div>";
-                infowindow.setContent(html);
-                infowindow.open(map, marker);
+                document.getElementById("post-title").innerHTML = x[key].title;
+                document.getElementById("post-image").src = x[key].image;
+                document.getElementById("post-description").innerHTML = x[key].description;
+                document.getElementById("post-time").innerHTML = x[key].time;
+                document.getElementById("post-date").innerHTML = x[key].date;
+                document.getElementById("post-category").innerHTML = "Category: " + x[key].category;
+                document.getElementById('id103').style.display='block'
+                map.setCenter(new google.maps.LatLng(x[key].latitude, x[key].longitude));
                 }
                 })(marker, i));
             });

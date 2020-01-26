@@ -1,0 +1,1 @@
+document.querySelectorAll(".gm-style-iw").style.image = "linear-gradient(to bottom right, rgb(215, 121, 172), rgb(61, 171, 213));";

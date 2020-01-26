@@ -120,15 +120,16 @@
                 });
             }
             var marker;
-
             function placeMarker(location) {
                 if (marker) {
+                    marker.setIcon('marker.png');
                     marker.setPosition(location);
                 } else {
                     marker = new google.maps.Marker({
                         position: location,
                         map: mapnew
                     });
+                    marker.setIcon('marker.png');
                 }
             }
 
