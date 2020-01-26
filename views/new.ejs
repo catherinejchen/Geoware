@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+    <link href="StyleSheet.css" rel="StyleSheet" type="text/css">
+    <title>New</title>
+</head>
+
+<body id="background">
+    <div class="container">
+        <div id="map-new"></div>
+    </div>
+    <form class="container-fifty" method="POST" action="/add">
+        <div>
+            <p class="text-caption">pinpoint a location above</p>
+        </div>
+        <div class="grid-buttons">
+            <div class="grid-buttons__item grid-buttons__item--1">
+                <button type="button" class="cards-button cards" onclick="document.getElementById('picture-select').click();">
+                    <img class="cards-img" src="camera.png">
+                    <p class="cards-text">upload photos</p>
+                </button>
+                <input type="file" onchange="getBase64()" style="display: none" id="picture-select" name="myFile">
+            </div>
+            <div class="grid-buttons__item grid-buttons__item--2">
+                <button type="button" class="cards-button cards" onclick="document.getElementById('id01').style.display='block'">
+                    <img class="cards-img" src="edit.png">
+                    <p class="opacity cards-text">write a post</p>
+                </button>
+                <div id="id01" class="w3-modal">
+                    <div class="w3-modal-content">
+                        <div class="w3-container">
+                            <span onclick="document.getElementById('id01').style.display='none'"
+                                class="w3-button w3-display-topright">&times;</span>
+                            <p>WRITE A POST</p>
+                            <input required type="text" name="title" placeholder="title"><br>
+                            <textarea required id="description" name="description" placeholder="description"
+                                style="height:90px"></textarea>
+                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="next-button"><i
+                                    class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-buttons__item grid-buttons__item--3">
+                <button type="button" class="cards-button cards" onclick="document.getElementById('id02').style.display='block'">
+                    <img class="cards-img" src="list.png">
+                    <p class="cards-text">choose categories</p>
+                </button>
+                <div id="id02" class="w3-modal">
+                    <div class="w3-modal-content">
+                        <div class="w3-container">
+                            <span onclick="document.getElementById('id02').style.display='none'"
+                                class="w3-button w3-display-topright">&times;</span>
+                            <p class="opacity">CHOOSE CATEGORIES</p>
+                            <div class="opacity custom-select">
+                                <div class="select">
+                                    <select class="dropdown" name="category">
+                                        <option value="Chemical">Chemical</option>
+                                        <option value="Crime">Crime</option>
+                                        <option value="Damaged Property">Damaged Property</option>
+                                        <option value="Electric/Wiring">Electric/Wiring</option>
+                                        <option value="Gas">Gas</option>
+                                        <option value="Landslide">Landslide</option>
+                                        <option value="Quicksand">Quicksand</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                                class="margin-top-15 next-button"><i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input style="display: none;" id="input-latitude" required type="text" name="latitude">
+            <input style="display: none;" id="input-longitude" required type="text" name="longitude">
+            <input style="display: none;" id="input-image" required type="text" name="image">
+            <button type="submit" class="text-submit button button-5 button-round">submit</button>
+        </div>
+    </form>
+    <script>
+        var mapnew;
+
+        function initMap() {
+            mapnew = new google.maps.Map(document.getElementById('map-new'), {
+                center: {
+                    lat: 49.5,
+                    lng: -123.121
+                },
+                zoom: 18,
+                // zoomControl: false,
+                mapTypeControl: false,
+                // fullscreenControl: false,
+                scaleControl: false,
+                streetViewControl: false
+            });
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    lat = position.coords.latitude;
+                    lng = position.coords.longitude;
+                    mapnew.setCenter(new google.maps.LatLng(lat, lng));
+                    var Geocoder = new google.maps.Geocoder;
+
+                    function geocodeLatLng(latlng, cb) {
+                        return Geocoder.geocode({
+                            'location': latlng
+                        }, function (res, status) {
+                            return cb((status === 'OK') ? (res[1] || "Nothing found") : status);
+                        });
+                    }
+                });
+            }
+            var marker;
+
+            function placeMarker(location) {
+                if (marker) {
+                    marker.setPosition(location);
+                } else {
+                    marker = new google.maps.Marker({
+                        position: location,
+                        map: mapnew
+                    });
+                }
+            }
+
+            google.maps.event.addListener(mapnew, 'click', function (event) {
+                placeMarker(event.latLng);
+                document.getElementById("input-latitude").value = event.latLng.lat();
+                document.getElementById("input-longitude").value = event.latLng.lng();
+            });
+        }
+
+        function getBase64() {
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // convert image file to base64 string
+                document.getElementById("input-image").value = reader.result;
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVFxlXZXgKNSabKaxNb82u9ex126Ib48&callback=initMap"
+        async defer></script>
+    <script src="Script.js"></script>
+</body>
+
+</html>

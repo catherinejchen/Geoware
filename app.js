@@ -41,39 +41,46 @@ function makeid(length) {
 }
 
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({
+app.use(bodyParser.json({
+    limit: '25mb',
     extended: true
-}));
+}))
+app.use(bodyParser.urlencoded({
+    limit: '25mb',
+    extended: true
+}))
 
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-
-    // firebase.database().ref('/1/name').set("hello");
-    // title,catgory, description,images
-    firebase.database().ref('/').on('value', snapshot => {
-        console.log(snapshot.val());
-    }, error => {
-        console.log(error);
-    })
-
     res.render('index');
 });
 
+function objToString(obj) {
+    var str = '';
+    for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            str += p + '::' + obj[p] + '\n';
+        }
+    }
+    return str;
+}
+
 app.get('/nearby', function (req, res) {
-
-    // firebase.database().ref('/1/name').set("hello");
-    // title,catgory, description,images
-    firebase.database().ref('/').on('value', snapshot => {
-        console.log(snapshot.val());
-    }, error => {
-        console.log(error);
-    })
-
-    res.render('nearby');
+        firebase.database().ref('/').on('value', snapshot => {
+                res.render('nearby', {
+                    data: snapshot.val()
+                });
+        }, error => {
+            console.log(error);
+        });
 });
 
-app.post('/', function (req, res) {
+app.get('/new', function (req, res) {
+    res.render('new');
+});
+
+app.post('/add', function (req, res) {
     firebase.database().ref('/' + makeid(16) + '/').set({
         title: req.body.title,
         description: req.body.description,
@@ -90,7 +97,7 @@ app.post('/', function (req, res) {
             " PM" :
             " AM"),
     });
-    res.render('nearby');
+    res.redirect("nearby");
 });
 
 app.listen(3000, function () {
