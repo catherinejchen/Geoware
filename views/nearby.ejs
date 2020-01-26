@@ -59,7 +59,7 @@
                 google.maps.event.addListener(marker, 'click',
                 (function (marker, i) {
                 return function () {
-                let html = "<div class='info-window'><h1>" + x[key].title + "</h1><img width=150 src='" + x[key].image + "'>" + "<p>" + x[key].description + "</p>" + "<h3>" + x[key].time + "</h3>" + "<h3>" + x[key].date + "</h3>" + "<h3>Category: " + x[key].category + "</h3>" + "</div>";
+                let html = "<div class='info-window'><h1>" + x[key].title + "</h1><img src='" + x[key].image + "'>" + "<p>" + x[key].description + "</p>" + "<h3>" + x[key].time + "</h3>" + "<h3>" + x[key].date + "</h3>" + "<h3>Category: " + x[key].category + "</h3>" + "</div>";
                 infowindow.setContent(html);
                 infowindow.open(map, marker);
                 }
