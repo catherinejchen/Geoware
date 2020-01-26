@@ -4,6 +4,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
         <link href="StyleSheet.css" rel="StyleSheet" type="text/css">
@@ -11,21 +12,13 @@
     </head>
     <body id="background">
         <div class="container">
-            <!-- <img class="squiggly" src="Squiggly.png"> -->
-            <!-- <div class="container-top-middle grid">
-                <div class="text-overcenter grid__item grid__item--1">
-                    <a class="text-press no-decoration" href="nearby.html">NEARBY</a>
-                </div>
-                <div class="text-over center grid__item grid__item--2">
-                    <a class="text-press no-decoration" href="new.html">NEW</a>
-                </div>
-            </div> -->
             <div id="map-new"></div>
         </div>
         <div class="container-fifty">
             <div>
                 <p class="text-caption">pinpoint a location above</p>
             </div>
+<<<<<<< HEAD
             <!-- <div>
                 <button class="text button button-1 button-circle">images</button>
                 <button class="text button button-2 button-round">title</button>
@@ -33,18 +26,58 @@
                 <button class="text button button-4 button-round">category</button>
             </div > -->
         
+=======
+>>>>>>> 1c8993837636c1682e64ffeeb089c1aaa986521a
             <div class="grid-buttons">
-                <div class="grid-buttons__item grid-buttons__item--1 cards">
+                <div class="cards grid-buttons__item grid-buttons__item--1">
                     <img class="cards-img" src="camera.png">
                     <p class="cards-text">upload photos</p>
                 </div>
-                <div class="grid-buttons__item grid-buttons__item--2 cards">
-                    <img class="cards-img" src="edit.png">
-                    <p class="cards-text">write a post</p>
+                <div class="grid-buttons__item grid-buttons__item--2">
+                    <button class="cards-button cards" onclick="document.getElementById('id01').style.display='block'">
+                        <img class="cards-img" src="edit.png">
+                        <p class="opacity cards-text">write a post</p>
+                    </button>
+                    <div id="id01" class="w3-modal">
+                        <div class="w3-modal-content">
+                            <div class="w3-container">
+                                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                <p>WRITE A POST</p>
+                                <input required type="text" name="title" placeholder="title"><br>
+                                <textarea required id="description" name="description" placeholder="description" style="height:90px"></textarea>
+                                <button type="submit"><i class="fa fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="grid-buttons__item grid-buttons__item--3 cards">
-                    <img class="cards-img" src="list.png">
-                    <p class="cards-text">choose categories</p>
+                <div class="grid-buttons__item grid-buttons__item--3">
+                    <button class="cards-button cards" onclick="document.getElementById('id02').style.display='block'">
+                        <img class="cards-img" src="list.png">
+                        <p class="cards-text">choose categories</p>
+                    </button>
+                    <div id="id02" class="w3-modal">
+                        <div class="w3-modal-content">
+                            <div class="w3-container">
+                                <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                <p class="opacity">CHOOSE CATEGORIES</p>
+                                <div class="opacity custom-select">
+                                    <div class="select">
+                                        <select class="dropdown" name="Categories">
+                                            <option value="Chemical">Chemical</option>
+                                            <option value="Crime">Crime</option>
+                                            <option value="Damaged Property">Damaged Property</option>
+                                            <option value="Electric/Wiring">Electric/Wiring</option>
+                                            <option value="Gas">Gas</option>
+                                            <option value="Landslide">Landslide</option>
+                                            <option value="Quicksand">Quicksand</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="margin-top-15" type="submit"><i class="fa fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div>

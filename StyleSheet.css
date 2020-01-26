@@ -11,7 +11,7 @@ body{
     font-family: myriad-pro, sans-serif;
     font-style: normal;
     font-size: 15px;
-    letter-spacing: 10px;
+    letter-spacing: 8px;
     /* overflow-y: hidden; */
 }
 
@@ -125,6 +125,7 @@ p{
 }
 
 .button-title:hover{
+    cursor: pointer;
     /* background: transparent; */
     border: 1px solid #fff;
     /* color: rgba(0, 0, 0, 0.1); */
@@ -140,12 +141,20 @@ p{
 
 .button:hover{
     opacity: 50%;
+    cursor: pointer;
 }
 
 .cards{
+    border: none;
     margin-top: 125px;
     background-color: black;
     opacity: 50%;
+    padding: 0;
+}
+
+.cards-button:hover{
+    cursor: pointer;
+    opacity: 40%;
 }
 
 .cards-img{
@@ -158,6 +167,7 @@ p{
     font-size: 10px;
     letter-spacing: 1px;
     padding-bottom: 50px;
+    color: #fff;
 }
 
 .center{
@@ -203,6 +213,36 @@ p{
     }
 }
 
+.custom-select{
+    margin-top: 15px;
+    font-size: 13px;
+    padding: 10px 8px 10px 14px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .custom-select .select{
+    width: 83%;
+    background:url('arrow.png') no-repeat;
+    background-position:80% center;
+  }
+  
+  .custom-select .select select{
+    outline: none;
+    background: transparent;
+    line-height: 1;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    width: 120%;
+    position: relative;
+    z-index: 10;
+    font-size: 1em;
+  }
+
 .great-vibes-font{
     font-family: 'Great Vibes';
     font-size: 95px;
@@ -240,11 +280,11 @@ p{
 }
 
 .grid-buttons{
-    margin: 0 15px;
+    margin: -5px 15px;
     /* padding-top: 30px; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 115px;
+    grid-template-rows: 100px;
     grid-gap: 15px;
 }
 
@@ -280,6 +320,70 @@ p{
     text-transform: uppercase;
     font-size: 18px;
     letter-spacing: 3px;
+}
+
+input[type=text]{
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
+    opacity: 30%;
+    box-sizing: border-box;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    text-align: center;
+    font-family: myriad-pro, sans-serif;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+textarea {
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
+    opacity: 30%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+    text-align: center;
+    font-family: myriad-pro, sans-serif;
+    font-style: normal;
+    letter-spacing: 2px;
+    padding-top: 10px;
+}
+
+button[type=submit] {
+    height: 20px;
+    width: 20px;
+    padding: 20px 20px;
+    border-radius: 50%;
+    opacity: 30%;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: grey;
+    font-size: 10px;
+    font-family: myriad-pro, sans-serif;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+button[type=submit]:hover{
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.fa{
+    font-size: 20px;
+    position: absolute;
+    /* top: 50%; */
+    left: 50.2%;
+    transform: translate(-50%, -50%);
+}
+
+.margin-top-15{
+    margin-top: 15px;
 }
 
 .margin-top-90{
@@ -341,7 +445,7 @@ p{
 }
 
 .text-caption{
-    padding-top: 15px;
+    padding-top: 25px;
     font-family: myriad-pro, sans-serif;
     font-style: normal;
     font-size: 17px;
@@ -349,16 +453,29 @@ p{
 }
 
 .text-submit{
+    padding-top: 20px;
     font-family: myriad-pro, sans-serif;
     color: #669ECB;
     font-style: normal;
     font-size: 14px;
     letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
 .text-press:hover{
     opacity: 40%;
+    cursor: pointer;
     /* text-decoration: underline; */
+}
+
+.w3-modal-content{
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* height: calc(100vh - 40px); */
+    background-image: linear-gradient(to bottom right, rgb(215, 121, 172), rgb(61, 171, 213));
 }
 
 .gmnoprint a, .gmnoprint span {
