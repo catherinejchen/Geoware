@@ -51,7 +51,7 @@ p{
     text-transform: capitalize;
 }
 
-.button {
+.button{
     border: none;
     color: black;
     padding: 20px;
@@ -112,15 +112,26 @@ p{
 .button-title{
     background: transparent;
     border: 1px solid #fff;
-    /* color: black; */
+    color: #fff;
     padding: 20px 10px;
     text-align: center;
-    /* text-decoration: none; */
     display: inline-block;
-    /* font-size: 16px; */
-    /* margin: 2px 2px; */
     /* opacity: 80%; */
-    width: 150px;
+    width: 100%;
+}
+
+.button-title:hover{
+    /* background: transparent; */
+    border: 1px solid #fff;
+    /* color: rgba(0, 0, 0, 0.1); */
+    background-color: white;
+    /* mix-blend-mode: screen; */
+    padding: 20px 10px;
+    text-align: center;
+    display: inline-block;
+    /* opacity: 100%; */
+    width: 100%;
+    color: rgb(154, 141, 189);
 }
 
 .button:hover{
@@ -181,9 +192,9 @@ p{
     margin: 0;
     /* padding-top: 30px; */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
     grid-template-rows: 5vw;
-    grid-gap: 15vw;
+    grid-gap: 30px;
 }
 
 .grid__item {
@@ -275,10 +286,10 @@ p{
     letter-spacing: 6px;
 }
 
-.text-over{
-    /* position: absolute;
-    transform: translate(-50%, 0%); */
-}
+/* .text-over{
+    position: absolute;
+    transform: translate(-50%, 0%);
+} */
 
 .text-press:hover{
     opacity: 40%;
