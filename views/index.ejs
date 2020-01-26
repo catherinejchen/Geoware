@@ -13,10 +13,10 @@
 <body id="background">
     <div class="container-top">
         <div class="padding-top-60">
-            <p class="center great-vibes-font">Location</p>
+            <p id="city-name" class="center great-vibes-font"></p>
         </div>
         <div>
-            <p class="header-font center">CITY</p>
+            <p id="address" class="header-font center"></p>
         </div>
         <div class="grid padding-top-60">
             <div class="center grid__item grid__item--1">
@@ -35,10 +35,11 @@
     </div>
     <div class="container">
         <img class="squiggly" src="Squiggly.png">
-        <div id="map-small" class="opacity"></div>
+        <div id="map-small" class="blur opacity"></div>
     </div>
     <script>
         var mapsmall;
+        var lat, lng;
 
         function initMap() {
             mapsmall = new google.maps.Map(document.getElementById('map-small'), {
@@ -53,6 +54,50 @@
                 scaleControl: false,
                 streetViewControl: false
             });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    lat = position.coords.latitude;
+                    lng = position.coords.longitude;
+                    mapsmall.setCenter(new google.maps.LatLng(lat, lng));
+                    var Geocoder = new google.maps.Geocoder;
+
+                    function geocodeLatLng(latlng, cb) {
+                        return Geocoder.geocode({
+                            'location': latlng
+                        }, function (res, status) {
+                            return cb((status === 'OK') ? (res[1] || "Nothing found") : status);
+                        });
+                    }
+
+
+                    // The ones you get from weather
+                    var coordinates = {
+                        lat: lat,
+                        lng: lng
+                    }
+
+                    geocodeLatLng(coordinates, function (data) {
+                        let street_number;
+                        console.log(data);
+                        const localityObject = data.address_components.filter((obj) => {
+                            return obj.types.includes('locality');
+                        })[0];
+                        const localityObject2 = data.address_components.filter((obj) => {
+                        return obj.types.includes('street_number');
+                        })[0];
+                        const localityObject3 = data.address_components.filter((obj) => {
+                        return obj.types.includes('route');
+                        })[0];
+                        const city = localityObject.long_name;
+                        if (localityObject2) street_number = localityObject2.long_name;
+                        const address = localityObject3.long_name;
+                        document.getElementById("city-name").innerHTML = city;
+                        document.getElementById("address").innerHTML = street_number + " " + address;
+                 
+                    });
+                });
+            }
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVFxlXZXgKNSabKaxNb82u9ex126Ib48&callback=initMap"
