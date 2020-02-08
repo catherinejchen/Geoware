@@ -3,14 +3,14 @@ let bodyParser = require('body-parser');
 let app = express();
 let firebase = require('firebase');
 let config = {
-    apiKey: "AIzaSyCPxPvFIftu4GBrhMcG9aElHVyRQFwTr1g",
-    authDomain: "deltahacks-vi.firebaseapp.com",
-    databaseURL: "https://deltahacks-vi.firebaseio.com",
-    projectId: "deltahacks-vi",
-    storageBucket: "deltahacks-vi.appspot.com",
-    messagingSenderId: "505235319471",
-    appId: "1:505235319471:web:93b179da4b404a7869025a",
-    measurementId: "G-1PVWRLRJJT"
+    apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    authDomain: "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    databaseURL: "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    projectId: "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    storageBucket: "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    messagingSenderId: "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    appId: "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    measurementId: "xxxxxxxxxxxxxxxxxxxxxxxxx"
 };
 let d = new Date();
 let monthNames = [
